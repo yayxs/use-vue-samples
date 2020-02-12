@@ -1,4 +1,4 @@
-# vue-ts-btn
+# vue-mint-app
 
 ## Project setup
 ```
