@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <test></test>
+    <bar-com></bar-com>
   </div>
 </template>
 
 <script>
-import Test from "@/pages/Test.vue";
+import barCom from "@/components/barChart/bar_charts.vue";
 
 export default {
   name: "App",
   components: {
-    Test,
+    barCom,
   },
 };
 </script>
