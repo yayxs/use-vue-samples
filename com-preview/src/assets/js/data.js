@@ -1,5 +1,5 @@
 const options = {
-  color: ["#C26F4E", "#46A85B", "#2DABFF"], //
+  color: ["#C26F4E", "#46A85B", "#2DABFF"], 
   title: {
     text: "这是这是这是这是标题b",
     show: true,
@@ -18,34 +18,34 @@ const options = {
     },
   },
   legend: { // 图例
-    text: "",
+    text: "1212",
     show: true,
-    left: "center",
+    left: "left",
     top: "0",
-    backgroundColor: "transparent",
+    backgroundColor: "pink",
     textStyle: {
-      color: "#fff",
+      color: "black",
       fontSize: "12",
     },
     data: ["领导", "教师", "学生"],
   },
   grid: { // 直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。
-    show: false,
+    show: true,
     left: "43",
     top: "30",
-    borderColor: "rgba(255,255,255,0.5)",
+    borderColor: "black",
     width: "75%",
     height: "45%",
   },
   xAxis: {
-    type: "category",
-    name: "站点",
+    type: "category", //
+    name: "x想轴z",
     nameLocation: "end",
     nameTextStyle: {
       fontsize: 10,
-      color: "#fff",
+      color: "blue",
     },
-    nameGap: "15",
+    nameGap: "20",
     data: [
       "云平台",
       "辽宁省",
@@ -64,23 +64,23 @@ const options = {
     min: null,
     max: null,
     splitLine: {
-      show: false,
+      show: true,
       lineStyle: {
-        color: "#eee",
+        color: "yellow",
         type: "solid",
       },
     },
     axisLine: {
       show: true,
       lineStyle: {
-        color: "rgba(255,255,255,1)",
+        color: "blue",
         type: "solid",
       },
     },
     axisLabel: {
       show: true,
       interval: "auto",
-      color: "#fff",
+      color: "black",
     },
     axisTick: {
       show: true,
@@ -88,21 +88,21 @@ const options = {
     boundaryGap: true,
   },
   yAxis: {
-    type: "value",
-    name: "数量",
-    nameLocation: "end",
+    type: "value", // s数值z
+    name: "y轴",
+    nameLocation: "center",
     nameTextStyle: {
       fontsize: 10,
-      color: "#fff",
+      color: "red",
     },
-    nameGap: "15",
+    nameGap: "30",
     data: [],
     min: 0,
     max: null,
     splitLine: {
-      show: false,
+      show: true,
       lineStyle: {
-        color: "#eee",
+        color: "yellow",
         type: "solid",
       },
     },
@@ -116,7 +116,7 @@ const options = {
     axisLabel: {
       show: true,
       interval: 0,
-      color: "rgba(255,255,255,1)",
+      color: "#148F77",
     },
     axisTick: {
       show: true,
@@ -125,9 +125,9 @@ const options = {
   },
   dataZoom: [
     {
-      backgroundColor: "rgba(19,60,163,0.3)",
-      borderColor: "#133CA3",
-      bottom: 30,
+      backgroundColor: "#943126",
+      borderColor: "pink",
+      bottom: 100,
       endValue: "测试虚转实",
       fillerColor: "rgba(255,255,255,0.3)",
       height: 12,
@@ -139,7 +139,7 @@ const options = {
         color: "#2dabff",
       },
       textStyle: {
-        color: "rgba(255,255,255,0.5)",
+        color: "black",
       },
     },
   ],
@@ -154,7 +154,7 @@ const options = {
       itemStyle: {},
       label: {
         normal: {
-          show: false,
+          show: true,
           position: "top",
           formatter: "{c}",
           fontsize: 12,
@@ -200,5 +200,6 @@ const options = {
     },
   ],
 };
+
 
 console.log(options);

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <bar-com></bar-com>
+    <section class="home-art-num">121212</section>
   </div>
 </template>
 
@@ -15,4 +16,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" >
+#app{
+  border:1px solid red
+}
+</style>
