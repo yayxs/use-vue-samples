@@ -1,16 +1,16 @@
 /**
  * 可选的配置文件
  */
-const isProd = process.env.NODE_ENV !== 'development'; // 判断是否是生产环境
+const isProd = process.env.NODE_ENV !== "development"; // 判断是否是生产环境
 const devNeedCdn = true; // 默认本地也需要cdn 加速
 const productionGzip = true; // 是否启用Gzip
 const productionGzipExtensions = ["js", "css"]; // 需要gzip压缩的文件后缀
 const CompressionWebpackPlugin = require("compression-webpack-plugin"); // 开启 GZip 压缩
 const externals = {
-  vue: "Vue",
+  'vue': "Vue",
   "vue-router": "VueRouter",
-  vuex: "Vuex",
-  axios: "axios",
+  'vuex': "Vuex",
+  'axios': "axios",
   "element-ui": "ELEMENT",
   _: "lodash",
 };
