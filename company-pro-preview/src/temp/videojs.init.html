@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="//vjs.zencdn.net/7.8.2/video-js.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./videojs.css" />
+    <style>
+      .video-container {
+        width: 998px;
+        height: 550px;
+        border: 1px solid red;
+      }
+      .video-js {
+        /* 给.video-js设置字体大小以统一各浏览器样式表现，因为video.js采用的是em单位 */
+        font-size: 14px;
+      }
+      .video-js button {
+        outline: none;
+      }
+      .video-js.vjs-fluid,
+      .video-js.vjs-16-9,
+      .video-js.vjs-4-3 {
+        /* 视频占满容器高度 */
+        height: 100%;
+        background-color: #161616;
+      }
+      .vjs-poster {
+        background-color: #161616;
+      }
+      .video-js .vjs-big-play-button {
+        /* 中间大的播放按钮 */
+        font-size: 2.5em;
+        line-height: 2.3em;
+        height: 2.5em;
+        width: 2.5em;
+        -webkit-border-radius: 2.5em;
+        -moz-border-radius: 2.5em;
+        border-radius: 2.5em;
+        background-color: rgba(115, 133, 159, 0.5);
+        border-width: 0.12em;
+        margin-top: -1.25em;
+        margin-left: -1.75em;
+      }
+      .video-js.vjs-paused .vjs-big-play-button {
+        /* 视频暂停时显示播放按钮 */
+        display: block;
+      }
+      .video-js.vjs-error .vjs-big-play-button {
+        /* 视频加载出错时隐藏播放按钮 */
+        display: none;
+      }
+      .vjs-loading-spinner {
+        /* 加载圆圈 */
+        font-size: 2.5em;
+        width: 2em;
+        height: 2em;
+        border-radius: 1em;
+        margin-top: -1em;
+        margin-left: -1.5em;
+      }
+      .video-js .vjs-control-bar {
+        /* 控制条默认显示 */
+        display: flex;
+      }
+      .video-js .vjs-time-control {
+        display: block;
+      }
+      .video-js .vjs-remaining-time {
+        display: none;
+      }
+      .video-js .vjs-playback-rate .vjs-playback-rate-value {
+        line-height: 2.4;
+        font-size: 18px;
+      }
+      /* 进度条背景色 */
+      .video-js .vjs-play-progress {
+        color: #ffb845;
+        background-color: #ffb845;
+      }
+      .video-js .vjs-progress-control .vjs-mouse-display {
+        background-color: #ffb845;
+      }
+      .vjs-mouse-display .vjs-time-tooltip {
+        padding-bottom: 6px;
+        background-color: #ffb845;
+      }
+      .video-js .vjs-play-progress .vjs-time-tooltip {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- vjs-big-play-centered可使大的播放按钮居住，vjs-fluid可使视频占满容器 -->
+    <section class="video-container">
+      <video id="myVideo" class="video-js vjs-big-play-centered vjs-fluid">
+        <p class="vjs-no-js">
+          启用JS
+          <a href="https://videojs.com/html5-video-support/" target="_blank">
+            支持h5
+          </a>
+        </p>
+      </video>
+    </section>
+    <button onclick="handleClick()">切换视频</button>
+    <script src="//vjs.zencdn.net/7.8.2/video.min.js"></script>
+    <!-- 引入语言包 -->
+    <!-- <script src="//example.com/path/to/lang/es.js"></script> -->
+    <script>
+      let dom = document.querySelector("#myVideo");
+      let json = {
+        Play: "播放",
+        Pause: "暂停",
+        "Current Time": "当前时间",
+        Duration: "时长",
+        "Remaining Time": "剩余时间",
+        "Stream Type": "媒体流类型",
+        LIVE: "直播",
+        Loaded: "加载完毕",
+        Progress: "进度",
+        Fullscreen: "全屏",
+        "Non-Fullscreen": "退出全屏",
+        Mute: "静音",
+        Unmute: "取消静音",
+        "Playback Rate": "播放速度",
+        Subtitles: "字幕",
+        "subtitles off": "关闭字幕",
+        Captions: "内嵌字幕",
+        "captions off": "关闭内嵌字幕",
+        Chapters: "节目段落",
+        "Close Modal Dialog": "关闭弹窗",
+        Descriptions: "描述",
+        "descriptions off": "关闭描述",
+        "Audio Track": "音轨",
+        "You aborted the media playback": "视频播放被终止",
+        "A network error caused the media download to fail part-way.":
+          "网络错误导致视频下载中途失败。",
+        "The media could not be loaded, either because the server or network failed or because the format is not supported.":
+          "视频因格式不支持或者服务器或网络的问题无法加载。",
+        "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.":
+          "由于视频文件损坏或是该视频使用了你的浏览器不支持的功能，播放终止。",
+        "No compatible source was found for this media.":
+          "无法找到此视频兼容的源。",
+        "The media is encrypted and we do not have the keys to decrypt it.":
+          "视频已加密，无法解密。",
+        "Play Video": "播放视频",
+        Close: "关闭",
+        "Modal Window": "弹窗",
+        "This is a modal window": "这是一个弹窗",
+        "This modal can be closed by pressing the Escape key or activating the close button.":
+          "可以按ESC按键或启用关闭按钮来关闭此弹窗。",
+        ", opens captions settings dialog": ", 开启标题设置弹窗",
+        ", opens subtitles settings dialog": ", 开启字幕设置弹窗",
+        ", opens descriptions settings dialog": ", 开启描述设置弹窗",
+        ", selected": ", 选择",
+        "captions settings": "字幕设定",
+        "Audio Player": "音频播放器",
+        "Video Player": "视频播放器",
+        Replay: "重播",
+        "Progress Bar": "进度小节",
+        "Volume Level": "音量",
+        "subtitles settings": "字幕设定",
+        "descriptions settings": "描述设定",
+        Text: "文字",
+        White: "白",
+        Black: "黑",
+        Red: "红",
+        Green: "绿",
+        Blue: "蓝",
+        Yellow: "黄",
+        Magenta: "紫红",
+        Cyan: "青",
+        Background: "背景",
+        Window: "视窗",
+        Transparent: "透明",
+        "Semi-Transparent": "半透明",
+        Opaque: "不透明",
+        "Font Size": "字体尺寸",
+        "Text Edge Style": "字体边缘样式",
+        None: "无",
+        Raised: "浮雕",
+        Depressed: "压低",
+        Uniform: "均匀",
+        Dropshadow: "下阴影",
+        "Font Family": "字体库",
+        "Proportional Sans-Serif": "比例无细体",
+        "Monospace Sans-Serif": "单间隔无细体",
+        "Proportional Serif": "比例细体",
+        "Monospace Serif": "单间隔细体",
+        Casual: "舒适",
+        Script: "手写体",
+        "Small Caps": "小型大写字体",
+        Reset: "重启",
+        "restore all settings to the default values": "恢复全部设定至预设值",
+        Done: "完成",
+        "Caption Settings Dialog": "字幕设定视窗",
+        "Beginning of dialog window. Escape will cancel and close the window.":
+          "开始对话视窗。离开会取消及关闭视窗",
+        "End of dialog window.": "结束对话视窗",
+      };
+      const options = {
+        controls: true, // 是否显示控制条
+        poster: "../assets/imgs/video_poster.png", // 视频封面图地址
+        preload: "auto", // 需要的话，加载整个视频 一般情况下是auto
+        autoplay: false, // 不自动播放
+        fluid: true, // 自适应宽高
+        language: "zh-CN", // 设置语言
+        muted: true, // 是否静音
+        inactivityTimeout: false,
+        // 设置控制条组件
+        controlBar: {
+          currentTimeDisplay: true,
+          timeDivider: true,
+          durationDisplay: true,
+          remainingTimeDisplay: false,
+          children: [
+            { name: "playToggle" }, // 左下角播放暂停按钮
+            { name: "currentTimeDisplay" }, // 播放进度条/当前已播放时间
+            { name: "progressControl" }, // 播放进度条
+            { name: "durationDisplay" }, // 总时间
+            {
+              // 倍数播放
+              name: "playbackRateMenuButton",
+              playbackRates: [0.5, 1, 1.5, 2, 2.5],
+            },
+            {
+              name: "volumePanel", // 音量控制
+              inline: false, // 不使用水平方式
+            },
+            { name: "FullscreenToggle" }, // 全屏
+          ],
+        },
+        sources: [
+          // 视频源
+          {
+            src: "//vjs.zencdn.net/v/oceans.mp4",
+            type: "video/mp4",
+            poster: "../assets/imgs/video_poster.png",
+          },
+        ],
+      };
+      //[ { "camera": "card10",
+      // "title": "电影",
+      // "enText": "film",
+      // "fileUrl": "rtmp://192.168.12.126:1935/zonekey/00096F004025_film",
+      // "playerVolume": 0,
+      // "playerRestoreVolume": 0,
+      // "playerPause": false,
+      // "fullscreen": false } ]
+      let player = videojs(dom, options, function onPlayerReady() {
+        videojs.log("播放器准备好了");
+
+        // console.log(this);
+        this.on("ended", function() {
+          videojs.log("结束播放");
+        });
+      });
+      // 动态切换视频
+      let data = {
+        src: "//vjs.zencdn.net/v/oceans.mp4",
+        type: "video/mp4",
+      };
+      function handleClick() {
+        player.pause();
+        player.src(data);
+        player.load(data);
+        player.posterImage.setSrc("../assets/imgs/video_poster.png");
+        player.play();
+      }
+    </script>
+  </body>
+</html>

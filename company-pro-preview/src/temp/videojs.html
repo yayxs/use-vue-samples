@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <video
+      id="my-player"
+      class="video-js"
+      preload="auto"
+      poster="//vjs.zencdn.net/v/oceans.png"
+      width="200"
+      height="100"
+      data-setup="{}"
+      autoplay
+    >
+      <!-- 浏览器并不都是支持相同的视频源 -->
+      <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+      <!-- MPEG 4文件使用 H264 视频编解码器和AAC音频编解码器 -->
+      <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm" />
+      <!-- WebM 文件使用 VP8 视频编解码器和 Vorbis 音频编解码器 -->
+      <source src="//vjs.zencdn.net/v/oceans.ogv" type="video/ogg" />
+      <!-- Ogg 文件使用 Theora 视频编解码器和 Vorbis音频编解码器 -->
+      <!-- 降级内容 -->
+      <p class="vjs-no-js">
+        启用js 升级网页浏览器
+        <a href="https://videojs.com/html5-video-support/" target="_blank">
+          支持 html 5视频
+        </a>
+      </p>
+    </video>
+  </body>
+  <script>
+    // src 展示视频的地址
+    // controls 视频展示浏览器自带的控件
+    // controlslist  当浏览器显示自己的控件集(例如，当指定了Controls属性时)，Controlslist属性将帮助浏览器选择在媒体元素上显示的控件。
+    // object-position 调整视频元素内部的位置
+    // buffered 这个属性可以读取到哪段时间范围内的媒体被缓存了
+    // poster 一个海报帧的URL，用于在用户播放或者跳帧之前展示
+    // preload 用户需要这个视频优先加载；换句话说就是提示：如果需要的话，可以下载整个视频，即使用户并不一定会用它。
+    // src 要嵌到页面的视频的URL。可选；你也可以使用video块内的 <source> 元素来指定需要嵌到页面的视频。
+    // muted 布尔属性，指明了视频里的音频的默认设置。设置后，音频会初始化为静音。
+  </script>
+</html>
