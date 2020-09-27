@@ -6,7 +6,7 @@ import ElementUI from 'element-ui';
 // import element from './components/element/element'
 import 'element-ui/lib/theme-chalk/index.css';
 
-import './assets/fonts/font.scss';
+// import './assets/fonts/font.scss';
 
 // Vue.use(element);
 Vue.use(ElementUI)
