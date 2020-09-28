@@ -26,6 +26,7 @@
     "babel-plugin-component": "^1.1.1",
     "eslint": "^7.10.0",
     "eslint-plugin-vue": "^6.2.2",
+    "videojs-flash": "^2.2.1",
     "vue-template-compiler": "^2.6.12",
     "webpack-bundle-analyzer": "^3.9.0"
   },

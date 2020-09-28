@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="main-player">
-      <simple-video-player />
+      <simple-video-player @exitFullScreen="exitFullScreen" @enterFullScreen="enterFullScreen" :videoInfo="videoInfo" />
     </section>
   </div>
 </template>
@@ -15,9 +15,20 @@ export default {
     SimpleVideoPlayer
   },
   data() {
-    return {};
+    return {
+      videoInfo:{
+        targetUrl:`https://cdn.jsdelivr.net/gh/chuzhixin/videos@master/video.mp4`
+      }
+    };
   },
-  methods: {},
+  methods: {
+    exitFullScreen(){
+      console.log(`退出全屏`)
+    },
+    enterFullScreen(){
+      console.log(`全屏`)
+    }
+  },
   mounted() {},
 };
 </script>
