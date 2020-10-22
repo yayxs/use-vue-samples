@@ -1,7 +1,7 @@
 <template>
-  <div style="border:1px solid red;width:100px;height:100px">
+  <div style="border: 1px solid red; width: 100px; height: 100px">
     {{ oldTitle }}
-    <p style="border:1px solid black">{{ newTitle}}</p>
+    <p style="border: 1px solid black">{{ newTitle }}</p>
   </div>
 </template>
 
